@@ -34,11 +34,11 @@ while True:
     temperature_value = d.temperature()
     humidity_value = d.humidity()
     
-    # Exibir medidas de temperatura e umidade
+    # Exibe medidas de temperatura e umidade
     print("Temperatura = " + str(temperature_value))
     print("Umidade = " + str(humidity_value))
     
-    # Verificar se é necessário ligar o rele
+    # Verifica se é necessário ligar o rele
     if(humidity_value >= 70 or temperature_value > 31):
         print("Rele ligado!")
         rele.value(1)
@@ -46,13 +46,13 @@ while True:
         print("Rele de umidade desligado!")
         rele.value(0)
     
-    # Enviar a temperatura e umidade para o servidor thing speak 
+    # Envia a temperatura e umidade para o servidor thing speak 
     updateThingSpeak = "https://api.thingspeak.com/update?api_key=0O4649B4SXI34HVN&field1=" + str(temperature_value) + "&field2=" + str(humidity_value) 
     response = urequests.get(updateThingSpeak)
     print("Update ThingSpeak response: " + response.text)
     print("================================")
     
-    time.sleep(5)
+    time.sleep(30)
 
 
 
